@@ -11,10 +11,12 @@ import SmartContract from "./containers/pages/SmartContract";
 
 import "./App.css";
 
+import axios from 'axios';
+
 function App() {
   useEffect(async () => {
-    // const res = await testService.getTest();
-    // console.log(res)
+    let res = await axios.get('/api/markets')
+    console.log(res)
   }, []);
   return (
     <div className="App">

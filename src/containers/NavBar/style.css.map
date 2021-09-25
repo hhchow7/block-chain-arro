@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "ACGI,MAAM,CAAC,GAAG,MAAM,SAAS,EAAE,KAAK;EDMhC,AACI,iBADa,CACb,gBAAgB,CAAC;IACb,eAAe,EAAE,QAAQ;GAC5B",
+    "sources": [
+        "style.scss",
+        "../../sass/variables.scss"
+    ],
+    "names": [],
+    "file": "style.css"
+}

@@ -6,9 +6,11 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
-import { InputGroup, FormControl } from "react-bootstrap";
+import { InputGroup, FormControl, Form } from "react-bootstrap";
 
-import "./style.css"
+import StellarHDWallet from "stellar-hd-wallet";
+
+import "./style.css";
 
 const useStyles = makeStyles({
   root: {
@@ -36,26 +38,51 @@ const useStyles = makeStyles({
 export default function EthereumKeypair() {
   const classes = useStyles();
 
+  const [publicKey, setPublicKey] = useState("");
+  const [privateKey, setPrivateKey] = useState("");
+  const [mnemonic, setMnemonic] = useState("");
+
   //   useEffect(() => {
 
   // }, []);
 
-  const KeyInputGroup = ({ id, label }) => {
+  function toHex(str) {
+    var result = "";
+    for (var i = 0; i < str.length; i++) {
+      result += str.charCodeAt(i).toString(16);
+    }
+    return result;
+  }
+
+  const handleGenerate = () => {
+    // generate ethereum keypair
+    const mnemonic = StellarHDWallet.generateMnemonic();
+    const wallet = StellarHDWallet.fromMnemonic(mnemonic);
+
+    let publicKey = toHex(wallet.getPublicKey(0));
+    let privateKey = toHex(wallet.getSecret(0));
+    // console.log(publicKey);
+    // console.log(privateKey);
+    // console.log(mnemonic);
+    setPublicKey(publicKey);
+    setPrivateKey(privateKey);
+    setMnemonic(mnemonic)
+  };
+
+  const KeyInputGroup = ({ id, label,value}) => {
     return (
-      <InputGroup key={id} className="mb-3">
+      // <InputGroup key={id} className="mb-3">
+      <Form.Group key={id} controlId={id} className="mb-3" style={{textAlign:"left"}}>
+        <Form.Label >{label}</Form.Label>
         <FormControl
           placeholder={label}
           aria-label={label}
           aria-describedby="basic-addon2"
+          defaultValue={value}
+          readOnly={true}
         />
-        <Button
-          variant="outline-secondary"
-          id="button-addon2"
-          style={{ backgroundColor: "grey" }}
-        >
-          Copy
-        </Button>
-      </InputGroup>
+        </Form.Group>
+      // </InputGroup>
     );
   };
 
@@ -66,16 +93,23 @@ export default function EthereumKeypair() {
           Ethereum Keypair Generater
         </Typography>
         <div className="mt-5" />
-        <KeyInputGroup id="publicKey" label="Public Key" />
+        <KeyInputGroup id="publicKey" label="Public Key" value={publicKey} />
         <div className="mt-3" />
-        <KeyInputGroup id="privateKey" label="Private Key" />
+        <KeyInputGroup id="privateKey" label="Private Key" value={privateKey} />
         <div className="mt-3" />
-        <KeyInputGroup id="mnemonicPhrases" label="Mnemonic Phrases" />
+        <KeyInputGroup
+          id="mnemonicPhrases"
+          label="Mnemonic Phrases"
+          value={mnemonic}
+        />
       </CardContent>
       <CardActions className={classes.action}>
         <Button
           size="small"
           className="card-action__btn"
+          onClick={() => {
+            handleGenerate();
+          }}
         >
           Generate
         </Button>

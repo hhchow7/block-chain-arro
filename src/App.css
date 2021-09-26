@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+  color: #1e2329;
+}
+
+.main {
+  background-color: #fafafa;
 }
 
 .main {

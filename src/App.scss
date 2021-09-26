@@ -1,5 +1,12 @@
+@import "./sass/variables.scss";
+
 .App {
     text-align: center;
+    color: $color-default;
+}
+
+.main{
+  background-color: lighten($color: grey, $amount: 48);
 }
 
 .main {

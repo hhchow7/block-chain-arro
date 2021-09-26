@@ -1,4 +1,6 @@
 
+$color-default:rgb(30, 35, 41);
+$color-theme:rgb(240, 185, 11);
 
 @mixin media-width-min($width) {
     @media all and (min-width: $width) {

@@ -1,10 +1,30 @@
 @import "../../sass/variables.scss";
 
-// @media (min-width: 992px){
-// .navbar-expand-lg .navbar-collapse {
-//     justify-content: flex-end;
-// }
-// }
+.nav-bar__container{
+    display: flex;
+    justify-content: space-between;;
+}
+
+.navbar-light {
+    padding: 0 1rem;
+    .navbar-nav{
+        .nav-link{
+            color: $color-default !important;
+            font-size: 0.875rem;
+            &:hover {
+                color: $color-theme !important;
+            }
+        }
+    }
+    .navbar-toggler{
+        &:focus {
+            box-shadow: none;
+        }
+    }
+    .navbar-brand {
+        color: $color-default !important;
+    }
+}
 
 @include media-width-min(992px){
     .navbar-expand-lg{

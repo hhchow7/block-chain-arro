@@ -48,12 +48,13 @@ function EnhancedTableHead(props) {
   return (
     <TableHead>
       <TableRow>
-        <TableCell padding="checkbox"></TableCell>
+        {/* <TableCell padding="checkbox"></TableCell> */}
         {tableCells.map((headCell) => (
           <TableCell
             key={headCell.id}
             align={"left"}
             sortDirection={orderBy === headCell.id ? order : false}
+            style={{paddingLeft: "2rem"}}
           >
             <TableSortLabel
               active={orderBy === headCell.id}
@@ -205,10 +206,9 @@ export default function EnhancedTable(props) {
                       key={row.name}
                       selected={isItemSelected}
                     >
-                      <TableCell padding="checkbox"></TableCell>
                       {tableCells.map((cell) => {
                         return (
-                          <TableCell key={cell.id} align="left">
+                          <TableCell key={cell.id} align="left" style={{paddingLeft: "2rem"}}>
                             {row[cell.id]}
                           </TableCell>
                         );

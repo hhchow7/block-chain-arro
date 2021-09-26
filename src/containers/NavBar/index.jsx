@@ -1,14 +1,12 @@
 import React from "react";
-import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Navbar, Nav} from "react-bootstrap";
 
 import "./style.css";
 
 function NavBar() {
   return (
-    <Navbar bg="light" expand="lg">
-      <Container>
-        <Navbar.Brand href="/">Arrokoth Venture</Navbar.Brand>
+    <Navbar expand="lg" className="navBar">
+        <Navbar.Brand href="/" style={{marginRight:"auto"}}>Arrokoth Venture</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav>
@@ -20,7 +18,6 @@ function NavBar() {
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
-      </Container>
     </Navbar>
   );
 }

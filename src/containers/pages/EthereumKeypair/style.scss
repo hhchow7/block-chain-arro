@@ -1,0 +1,10 @@
+@import "../../../sass/variables.scss";
+
+.card-action__btn {
+    background-color: $color-theme !important;
+    border-radius: unset !important;
+    padding: 0.5rem 1rem !important;
+    &:hover {
+        background-color: lighten($color: $color-theme, $amount: 15) !important;
+    }
+}

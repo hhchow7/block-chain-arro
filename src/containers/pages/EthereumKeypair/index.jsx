@@ -8,6 +8,8 @@ import Typography from "@material-ui/core/Typography";
 
 import { InputGroup, FormControl } from "react-bootstrap";
 
+import "./style.css"
+
 const useStyles = makeStyles({
   root: {
     minWidth: 275,
@@ -73,11 +75,7 @@ export default function EthereumKeypair() {
       <CardActions className={classes.action}>
         <Button
           size="small"
-          style={{
-            backgroundColor: "grey",
-            borderRadius: "unset",
-            padding: "0.5rem 1rem",
-          }}
+          className="card-action__btn"
         >
           Generate
         </Button>

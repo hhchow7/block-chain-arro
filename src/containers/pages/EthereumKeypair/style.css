@@ -1,0 +1,10 @@
+.card-action__btn {
+  background-color: #f0b90b !important;
+  border-radius: unset !important;
+  padding: 0.5rem 1rem !important;
+}
+
+.card-action__btn:hover {
+  background-color: #f7cf50 !important;
+}
+/*# sourceMappingURL=style.css.map */

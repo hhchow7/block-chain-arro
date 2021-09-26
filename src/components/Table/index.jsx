@@ -87,8 +87,8 @@ EnhancedTableHead.propTypes = {
 
 const useToolbarStyles = makeStyles((theme) => ({
   root: {
-    paddingLeft: theme.spacing(2),
-    paddingRight: theme.spacing(1),
+    display: "flex",
+    margin:"auto"
   },
   highlight:
     theme.palette.type === "light"
@@ -107,19 +107,22 @@ const useToolbarStyles = makeStyles((theme) => ({
 
 const EnhancedTableToolbar = (props) => {
   const classes = useToolbarStyles();
-  const { numSelected } = props;
+  const { numSelected,toolbarTitle } = props;
 
   return (
     <Toolbar
       className={clsx(classes.root, {
         [classes.highlight]: numSelected > 0,
       })}
-    ></Toolbar>
+    >
+      <div className="fs-5 fw-bold">{toolbarTitle}</div>
+    </Toolbar>
   );
 };
 
 EnhancedTableToolbar.propTypes = {
   numSelected: PropTypes.number.isRequired,
+  toolbarTitle: PropTypes.string.isRequired
 };
 
 const useStyles = makeStyles((theme) => ({
@@ -129,6 +132,9 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     width: "100%",
     marginBottom: theme.spacing(2),
+    display: "flex",
+    flexDirection: "column",
+    justifyContent:"center"
   },
   table: {
     minWidth: 750,
@@ -147,7 +153,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function EnhancedTable(props) {
-  const { data, tableCells } = props;
+  const { data, tableCells, toolbarTitle } = props;
   const classes = useStyles();
   const [order, setOrder] = React.useState("asc");
   const [orderBy, setOrderBy] = React.useState("calories");
@@ -175,7 +181,7 @@ export default function EnhancedTable(props) {
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
-        <EnhancedTableToolbar numSelected={selected.length} />
+        <EnhancedTableToolbar numSelected={selected.length} toolbarTitle={toolbarTitle}/>
         <TableContainer>
           <Table
             className={classes.table}
@@ -236,4 +242,5 @@ export default function EnhancedTable(props) {
 EnhancedTable.propTypes = {
   data: PropTypes.array.isRequired,
   tableCells: PropTypes.array.isRequired,
+  toolbarTitle: PropTypes.string.isRequired
 };

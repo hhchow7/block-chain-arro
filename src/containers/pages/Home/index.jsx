@@ -40,7 +40,7 @@ function Home() {
     fetchData();
 
     const interval = setInterval(() => {
-      console.log("Page A Data should be refreshed every 10 seconds.")
+      console.log("Page A Data should be refreshed every 10 seconds.");
       fetchData();
     }, 10000);
 
@@ -48,7 +48,11 @@ function Home() {
   }, []);
   return (
     <div>
-      <Table data={markets} tableCells={tableCells} />
+      <Table
+        data={markets}
+        tableCells={tableCells}
+        toolbarTitle="FTX Market"
+      />
     </div>
   );
 }
